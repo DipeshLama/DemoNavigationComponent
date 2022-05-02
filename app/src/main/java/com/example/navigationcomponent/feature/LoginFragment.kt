@@ -33,6 +33,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     private fun initListener (){
         binding.btnLogin.setOnClickListener(this)
+        binding.txvNavigateToSignUp.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {

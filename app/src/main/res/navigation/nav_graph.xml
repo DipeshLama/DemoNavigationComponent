@@ -17,6 +17,7 @@
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.navigationcomponent.feature.SignUpFragment"
@@ -30,5 +31,36 @@
         android:id="@+id/homeFragment"
         android:name="com.example.navigationcomponent.feature.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.navigationcomponent.feature.CategoryFragment"
+        android:label="Category"
+        tools:layout="@layout/fragment_category" />
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.navigationcomponent.feature.PaymentFragment"
+        android:label="Payment"
+        tools:layout="@layout/fragment_payment" >
+        <argument
+            android:name="accountName"
+            app:argType="string" />
+
+        <argument
+            android:name="accountNumber"
+            app:argType="string" />
+
+        <argument android:name="bank"
+            app:argType="string" />
+
+        <argument
+            android:name="amount"
+            app:argType="integer" />
+    </fragment>
 </navigation>
