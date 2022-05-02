@@ -13,14 +13,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.databinding.FragmentHomeBinding
 import com.example.navigationcomponent.notificationchannel.AppNotification
-import kotlin.time.Duration.Companion.milliseconds
 
 class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var binding : FragmentHomeBinding
     private lateinit var accountName : String
     private lateinit var accountNumber : String
     private lateinit var bankName : String
-    private var amount : Int? = null
+    private lateinit var amount : String
+    private var intAmount : Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +44,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         setInputValues()
         if (isValid()){
             val action = HomeFragmentDirections.actionHomeFragmentToPaymentFragment(accountName,accountNumber,bankName,
-                amount!!)
+                intAmount!!
+            )
             findNavController().navigate(action)
         }else{
             Toast.makeText(context, "Please enter all fields", Toast.LENGTH_SHORT).show()
@@ -57,7 +58,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             .createDeepLink()
             .setDestination(R.id.paymentFragment)
             .setGraph(R.navigation.nav_graph)
-            .setArguments(PaymentFragmentArgs(accountName,accountNumber,bankName, amount!!).toBundle())
+            .setArguments(PaymentFragmentArgs(accountName,accountNumber,bankName, intAmount!!).toBundle())
             .createPendingIntent()
 
         val notificationManager =NotificationManagerCompat.from(requireContext())
@@ -75,7 +76,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         accountName = binding.edtAccountName.text.toString()
         accountNumber = binding.edtAccountNumber.text.toString()
         bankName = binding.edtBankName.text.toString()
-        amount = binding.edtAmount.text.toString().toInt()
+        amount = binding.edtAmount.text.toString()
+        intAmount = amount.toInt()
     }
 
     override fun onClick(view: View?) {
@@ -92,7 +94,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     private fun isValid() : Boolean{
         when{
-            accountName.isEmpty() && accountNumber.isEmpty() && bankName.isEmpty() && amount.toString().isEmpty() ->{
+            binding.edtAccountName.text!!.isEmpty() && binding.edtAccountNumber.text!!.isEmpty() && binding.edtBankName.text!!.isEmpty() && binding.edtAmount.text!!.isEmpty() ->{
                 return false
             }
         }
