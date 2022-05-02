@@ -77,5 +77,13 @@
         android:textColor="@color/white"
         android:text="Send money"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnExplict"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_margin="10dp"
+        android:background="@color/purple_200"
+        android:textColor="@color/white"
+        android:text="Explicit Deep link"/>
 
 </LinearLayout>

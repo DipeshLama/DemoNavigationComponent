@@ -15,7 +15,6 @@ class SignUpFragment : Fragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.findViewById<BottomNavigationView>(R.id.btmNav)?.visibility =View.GONE
     }
 
     override fun onCreateView(
@@ -45,11 +44,6 @@ class SignUpFragment : Fragment(), View.OnClickListener {
 
     private fun navigateToLogin(){
         findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        activity?.findViewById<BottomNavigationView>(R.id.btmNav)?.visibility = View.VISIBLE
     }
 
 }
