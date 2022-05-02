@@ -1,6 +1,7 @@
 package com.example.navigationcomponent.feature
 
 import android.app.Notification
+import android.app.PendingIntent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,7 +21,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var accountNumber : String
     private lateinit var bankName : String
     private lateinit var amount : String
-    private var intAmount : Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,29 +38,40 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun initListener (){
         binding.btnSend.setOnClickListener(this)
         binding.btnExplict.setOnClickListener(this)
+        binding.btnLogin.setOnClickListener(this)
     }
 
     private fun navigateToPayment(){
         setInputValues()
         if (isValid()){
             val action = HomeFragmentDirections.actionHomeFragmentToPaymentFragment(accountName,accountNumber,bankName,
-                intAmount!!
+                amount
             )
             findNavController().navigate(action)
+
         }else{
             Toast.makeText(context, "Please enter all fields", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun sendNotification(){
+    private fun setDeepLink(){
         setInputValues()
-        val pendingIntent = findNavController()
-            .createDeepLink()
-            .setDestination(R.id.paymentFragment)
-            .setGraph(R.navigation.nav_graph)
-            .setArguments(PaymentFragmentArgs(accountName,accountNumber,bankName, intAmount!!).toBundle())
-            .createPendingIntent()
+        if (isValid()){
+            val pendingIntent = findNavController()
+                .createDeepLink()
+                .setDestination(R.id.paymentFragment)
+                .setGraph(R.navigation.nav_graph)
+                .setArguments(PaymentFragmentArgs(accountName,accountNumber,bankName, amount).toBundle())
+                .createPendingIntent()
 
+            sendNotification(pendingIntent,accountName)
+        }else{
+            Toast.makeText(context, "Please enter all fields", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    private fun sendNotification (pendingIntent : PendingIntent, accountName : String ){
         val notificationManager =NotificationManagerCompat.from(requireContext())
         val notification : Notification = NotificationCompat.Builder(requireContext(),AppNotification().channel_1)
             .setContentTitle("Payment Success")
@@ -77,7 +88,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         accountNumber = binding.edtAccountNumber.text.toString()
         bankName = binding.edtBankName.text.toString()
         amount = binding.edtAmount.text.toString()
-        intAmount = amount.toInt()
+    }
+
+    private fun navigateToLogin (){
+        findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
     }
 
     override fun onClick(view: View?) {
@@ -87,7 +101,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
 
             binding.btnExplict ->{
-                sendNotification()
+                setDeepLink()
+            }
+
+            binding.btnLogin ->{
+                navigateToLogin()
             }
         }
     }

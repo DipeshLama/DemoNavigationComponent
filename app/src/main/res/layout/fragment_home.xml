@@ -86,4 +86,13 @@
         android:textColor="@color/white"
         android:text="Explicit Deep link"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_margin="10dp"
+        android:background="@color/purple_200"
+        android:textColor="@color/white"
+        android:text="Login"/>
+
 </LinearLayout>
