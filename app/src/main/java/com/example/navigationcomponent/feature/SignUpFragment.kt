@@ -22,7 +22,6 @@ class SignUpFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sign_up, container, false)
     }
 
@@ -52,4 +51,5 @@ class SignUpFragment : Fragment(), View.OnClickListener {
         super.onDestroy()
         activity?.findViewById<BottomNavigationView>(R.id.btmNav)?.visibility = View.VISIBLE
     }
+
 }

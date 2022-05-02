@@ -24,14 +24,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txfLoginEmail"
+        android:id="@+id/txfSignupEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtLoginEmail"
+            android:id="@+id/edtSignupEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -39,14 +39,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txfLoginPassword"
+        android:id="@+id/txfSignupPassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtLoginPassword"
+            android:id="@+id/edtSignupPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"

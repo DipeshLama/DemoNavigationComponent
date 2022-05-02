@@ -9,17 +9,17 @@
     tools:context=".feature.LoginFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txfLoginEmail"
+        android:id="@+id/txfLoginUsername"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtLoginEmail"
+            android:id="@+id/edtLoginUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Username"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 

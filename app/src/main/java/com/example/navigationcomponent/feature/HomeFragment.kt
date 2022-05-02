@@ -29,7 +29,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         initListener()
     }
 
-    fun initListener (){
+    private fun initListener (){
         binding.btnSend.setOnClickListener(this)
     }
 

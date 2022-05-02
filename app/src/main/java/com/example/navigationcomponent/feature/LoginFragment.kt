@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.databinding.FragmentLoginBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class LoginFragment : Fragment(), View.OnClickListener {
     private lateinit var binding : FragmentLoginBinding
+    private val args : LoginFragmentArgs by navArgs()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +32,16 @@ class LoginFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
         initListener()
+        setData()
     }
 
     private fun initListener (){
         binding.btnLogin.setOnClickListener(this)
         binding.txvNavigateToSignUp.setOnClickListener(this)
+    }
+
+    private fun setData (){
+        binding.edtLoginUserName.setText(args.userName)
     }
 
     override fun onClick(view: View?) {

@@ -9,13 +9,21 @@
         android:id="@+id/loginFragment"
         android:name="com.example.navigationcomponent.feature.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="userName"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://example.com/login/{userName}"/>
     </fragment>
 
     <fragment
